@@ -3,21 +3,27 @@ package com.enhance.blog.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.enhance.blog.entities.User;
 import com.enhance.blog.payloads.UserDto;
 import com.enhance.blog.repositories.UserRepo;
 import com.enhance.blog.services.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepo userRepo;
 
 	@Override
-	public UserDto createUser(UserDto user) {
+	public UserDto createUser(UserDto userDto) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		User user = this.dtoToUser(userDto);
+		User savedUser=this.userRepo.save(user);
+		//UserDto userDto= this.userToDto(savedUser);
+		return this.userToDto(savedUser);
 	}
 
 	@Override
