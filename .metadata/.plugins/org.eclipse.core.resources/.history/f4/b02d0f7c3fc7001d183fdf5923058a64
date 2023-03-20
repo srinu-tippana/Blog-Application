@@ -1,0 +1,10 @@
+package com.enhance.blog.services;
+
+import com.enhance.blog.payloads.UserDto;
+
+public interface UserService {
+
+	
+	UserDto createUser(UserDto user);
+	
+}
