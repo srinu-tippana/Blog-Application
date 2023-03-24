@@ -1,0 +1,5 @@
+package com.enhance.blog.controllers;
+
+public class UserController {
+
+}

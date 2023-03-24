@@ -1,0 +1,5 @@
+package com.enhance.blog.exceptions;
+
+public class ResourceNotFoundException {
+
+}
