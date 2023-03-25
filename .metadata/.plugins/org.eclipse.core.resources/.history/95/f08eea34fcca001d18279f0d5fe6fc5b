@@ -1,0 +1,16 @@
+package com.enhance.blog.exceptions;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.enhance.blog.payloads.ApiResponse;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+	
+	public ResponseEntity<ApiResponse> resourceNotFoundException(){
+		
+	}
+
+	
+}
