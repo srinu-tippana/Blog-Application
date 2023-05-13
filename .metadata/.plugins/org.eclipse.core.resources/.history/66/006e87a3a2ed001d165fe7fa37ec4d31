@@ -1,0 +1,55 @@
+package com.enhance.blog.entities;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table( name="Users",schema="blog_app_apis")
+@NoArgsConstructor
+@Getter
+@Setter
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // for auto increment id generation
+	private int id;
+	
+	@Column(name="user_name",nullable=false,length=100) //  to define name column and attribites for it // this is for saving into the table
+	@NotEmpty
+	@Size(min=4,message="Length of Username must be greater than or equal to 4")
+	private String name;
+	
+	@Email(message="the format of email address is not valid")// this are constraints valid while trying to save data and they need @Valid annotation in the request body
+	private String email;
+	
+	@NotNull
+	@Size(min=3,max=10,message="Password must be min of 3 characters and max of 10 chars ")
+	//@Pattern(regexp=)
+	private String password;
+	
+	@NotNull
+	private String about;
+	
+	
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Post> posts = new ArrayList<Post>();
+}

@@ -1,7 +1,14 @@
 package com.enhance.blog.exceptions;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -18,6 +25,29 @@ public class GlobalExceptionHandler {
 		return  new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.NOT_FOUND);
 	}
 
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<Map<String,String>> handleMethodArgsNotValidException(ConstraintViolationException ex){
+		
+		HashMap<String,String> resp = new HashMap<>();
+		ex.getConstraintViolations();
+		
+		for(ConstraintViolation<?> violation:ex.getConstraintViolations()) {
+			System.out.println("the violation"+violation);
+			resp.put(violation.getPropertyPath().toString(),violation.getMessage());
+			System.out.println("New map is: " + resp);
+			
+		}
+		System.out.println("New map is: " + resp);
+		return new ResponseEntity<Map<String,String>>(resp,HttpStatus.BAD_REQUEST);
+	}
 	
+	
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	public ResponseEntity<ApiResponse> httpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex){
+		String message = ex.getMessage();
+		ApiResponse apiResponse = new ApiResponse(message,false);
+		
+		return  new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.NOT_FOUND);
+	}
 }
  

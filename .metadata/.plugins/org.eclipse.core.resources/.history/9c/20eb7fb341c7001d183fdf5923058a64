@@ -1,5 +1,0 @@
-package com.enhance.blog.services.impl;
-
-public class UserServiceImpl implements UserService {
-
-}

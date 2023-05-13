@@ -1,0 +1,7 @@
+package com.enhance.blog.payloads;
+
+public class PostDto {
+
+	private String title;
+	private String content;
+}

@@ -1,7 +1,0 @@
-package com.enhance.blog.payloads;
-
-public class ApiResponse {
-
-	public String message;
-	private bolean success;
-}

@@ -1,8 +1,0 @@
-package com.enhance.blog.entities;
-
-import javax.persistence.Entity;
-
-@Entity
-public class User {
-
-}

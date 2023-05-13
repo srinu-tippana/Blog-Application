@@ -1,0 +1,5 @@
+package com.enhance.blog.repositories;
+
+public interface PostRepo {
+
+}

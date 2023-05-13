@@ -1,5 +1,0 @@
-package com.enhance.blog.payloads;
-
-public class UserDto {
-
-}

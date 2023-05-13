@@ -1,6 +1,0 @@
-package com.enhance.blog.services;
-
-public interface UserService {
-
-	
-}

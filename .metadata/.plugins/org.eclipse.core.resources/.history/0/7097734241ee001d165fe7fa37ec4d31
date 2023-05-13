@@ -1,0 +1,14 @@
+package com.enhance.blog.services;
+
+import com.enhance.blog.entities.Post;
+import com.enhance.blog.payloads.PostDto;
+
+public interface PostService {
+
+	//create
+	Post createPost(PostDto postDto);
+	
+	//update
+	
+	
+}
